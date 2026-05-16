@@ -1,0 +1,48 @@
+name: Job Search Agent - Daily Run
+
+on:
+  schedule:
+    # Run at 9 AM UTC (adjust timezone as needed)
+    - cron: '0 9 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  scrape-jobs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests schedule
+      
+      - name: Run job search agent
+        env:
+          JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
+          HUNTER_API_KEY: ${{ secrets.HUNTER_API_KEY }}
+        run: python job_search_agent_scheduled.py
+      
+      - name: Commit and push results
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "Daily job scrape - $(date)" || echo "No changes to commit"
+          git push
+      
+      - name: Upload results as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: job-results
+          path: |
+            jobs_scheduled.csv
+            run_log_scheduled.txt
+            seen_jobs_scheduled.json
