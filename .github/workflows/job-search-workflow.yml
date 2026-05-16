@@ -1,5 +1,4 @@
 name: Job Search Agent - Daily Run
-
 on:
   schedule:
     # Run at 9 AM UTC (adjust timezone as needed)
@@ -12,7 +11,7 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -39,10 +38,11 @@ jobs:
           git push
       
       - name: Upload results as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: job-results
           path: |
             jobs_scheduled.csv
             run_log_scheduled.txt
             seen_jobs_scheduled.json
+          retention-days: 30
