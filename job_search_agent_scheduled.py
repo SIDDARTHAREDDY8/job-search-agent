@@ -1,44 +1,37 @@
 #!/usr/bin/env python3
 """
 ╔══════════════════════════════════════════════════════════════╗
-║        JOB SEARCH AGENT v5.0 — SCHEDULED                    ║
-║        Runs between 9 AM - 5 PM daily                       ║
-║        Scrapes jobs every hour during business hours        ║
+║        JOB SEARCH AGENT v5.0 — GITHUB ACTIONS OPTIMIZED      ║
+║        Single-run mode for GitHub Actions CI/CD              ║
+║        Runs once per schedule (9 AM UTC daily)               ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  Features:                                                   ║
 ║  ✓ Multi-board job search (JSearch API)                     ║
 ║  ✓ FILTERS: Entry Level / New Grad / 2+ Years              ║
 ║  ✓ ROLES: Full Stack Dev / Software Engineer / Data roles  ║
 ║  ✓ LOCATIONS: USA (Ohio, Cincinnati priority)              ║
-║  ✓ TIME-BASED SCHEDULING: 9 AM to 5 PM daily              ║
-║  ✓ HOURLY SCRAPING: Runs every hour during work hours      ║
 ║  ✓ DEDUPLICATION: Never processes same job twice           ║
 ║  ✓ CSV OUTPUT: All jobs saved to spreadsheet               ║
+║  ✓ FAST EXECUTION: 10-minute timeout with proper exit      ║
 ╚══════════════════════════════════════════════════════════════╝
 
 SETUP:
   1. JSEARCH_API_KEY   → https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch
   2. HUNTER_API_KEY    → https://hunter.io (free: 25 searches/mo)
-  3. Set environment variables or use .env file
+  3. Set environment variables
   4. Run: python3 job_search_agent_scheduled.py
 """
 
-import os, re, json, time, hashlib, requests, csv, sys
-from datetime import datetime, timedelta
+import os, re, json, hashlib, requests, csv, sys
+from datetime import datetime
 from pathlib import Path
-from typing import List, Dict, Optional
-import schedule
+from typing import List, Dict
+import signal
 
 # ─────────────────────────────────────────────────────────────
 #  CONFIGURATION
 # ─────────────────────────────────────────────────────────────
 CONFIG = {
-    # ── Scheduling ──────────────────────────────────────────
-    "start_hour": 9,      # 9 AM
-    "end_hour": 17,       # 5 PM
-    "run_interval": 180,   # Run every 180 minutes (3 hours)
-    "timezone": "US/Eastern",  # Adjust as needed
-
     # ── Job Search Parameters ───────────────────────────────
     "locations": ["Ohio, US", "Cincinnati, Ohio", "USA"],
     "search_remote": True,
@@ -54,6 +47,10 @@ CONFIG = {
     "seen_jobs_db":     "seen_jobs_scheduled.json",
     "output_csv":       "jobs_scheduled.csv",
     "run_log":          "run_log_scheduled.txt",
+    
+    # ── API Timeout (seconds) ──────────────────────────────
+    "api_timeout": 15,
+    "max_retries": 2,
 }
 
 # ─────────────────────────────────────────────────────────────
@@ -83,10 +80,10 @@ JOB_ROLES = {
 # ─────────────────────────────────────────────────────────────
 VISA_SPONSORSHIP_KEYWORDS = [
     r"\bh-?1b\b", r"\bh1b\b", r"\bvisa\s*sponsor", r"\bsponsors?\s*visa",
-    r"\bwork\s*visa", r"\bimmigration\s*sponsor", r"\bvisa\s*support",
-    r"\bvisa\s*eligible", r"\bvisa\s*required", r"\bvisa\s*available",
+    r"\bwork\s*visa\b", r"\bimmigration\s*sponsor", r"\bvisa\s*support",
+    r"\bvisa\s*eligible\b", r"\bvisa\s*required\b", r"\bvisa\s*available\b",
     r"\bh-?1b\s*sponsor", r"\bh-?1b\s*eligible", r"\bh-?1b\s*available",
-    r"\bwork\s*authorization", r"\bvisa\s*transfer", r"\bvisa\s*extension",
+    r"\bwork\s*authorization\b", r"\bvisa\s*transfer\b", r"\bvisa\s*extension\b",
 ]
 
 C2C_KEYWORDS = [
@@ -102,17 +99,17 @@ C2C_KEYWORDS = [
 EXPERIENCE_LEVELS = {
     "New Grad": [
         r"\bnew\s*grad(?:uate)?\b", r"\brecent\s*grad(?:uate)?\b",
-        r"\b0[\s-]*(?:to|-)[\s-]*1\s*year", r"\bno\s*experience\s*required\b",
+        r"\b0[\s-]*(?:to|-)[\s-]*1\s*year\b", r"\bno\s*experience\s*required\b",
         r"\bfresh(?:er|man)?\b", r"\bgraduate\s*(?:hire|program)\b", r"\bcampus\s*hire\b",
     ],
     "Entry Level (0-2 yrs)": [
         r"\bentry[- ]level\b", r"\bjunior\b",
-        r"\b0[\s-]*(?:to|-)[\s-]*2\s*year", r"\b1[\s-]*(?:to|-)[\s-]*2\s*year",
-        r"\bup\s*to\s*2\s*year", r"\bless\s*than\s*2\s*year",
+        r"\b0[\s-]*(?:to|-)[\s-]*2\s*year\b", r"\b1[\s-]*(?:to|-)[\s-]*2\s*year\b",
+        r"\bup\s*to\s*2\s*year\b", r"\bless\s*than\s*2\s*year\b",
     ],
     "2+ Years": [
-        r"\b2\+\s*year", r"\b3\+\s*year", r"\b4\+\s*year", r"\b5\+\s*year",
-        r"\b2[\s-]*(?:to|-)[\s-]*(?:4|5|6|7|8)\s*year",
+        r"\b2\+\s*year\b", r"\b3\+\s*year\b", r"\b4\+\s*year\b", r"\b5\+\s*year\b",
+        r"\b2[\s-]*(?:to|-)[\s-]*(?:4|5|6|7|8)\s*year\b",
         r"\bmid[- ]level\b", r"\bintermediate\b",
     ]
 }
@@ -127,32 +124,11 @@ def log(msg):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     line = f"[{timestamp}] {msg}"
     print(line)
-    with open(CONFIG["run_log"], "a") as f:
-        f.write(line + "\n")
-
-# ─────────────────────────────────────────────────────────────
-#  TIME CHECK
-# ─────────────────────────────────────────────────────────────
-def is_business_hours():
-    """Check if current time is within business hours (9 AM - 5 PM)."""
-    now = datetime.now()
-    hour = now.hour
-    return CONFIG["start_hour"] <= hour < CONFIG["end_hour"]
-
-def get_next_run_time():
-    """Get the next scheduled run time."""
-    now = datetime.now()
-    
-    # If within business hours, next run is in 60 minutes
-    if is_business_hours():
-        return now + timedelta(minutes=CONFIG["run_interval"])
-    
-    # If before 9 AM, next run is at 9 AM today
-    if now.hour < CONFIG["start_hour"]:
-        return now.replace(hour=CONFIG["start_hour"], minute=0, second=0, microsecond=0)
-    
-    # If after 5 PM, next run is at 9 AM tomorrow
-    return (now + timedelta(days=1)).replace(hour=CONFIG["start_hour"], minute=0, second=0, microsecond=0)
+    try:
+        with open(CONFIG["run_log"], "a") as f:
+            f.write(line + "\n")
+    except Exception as e:
+        print(f"[WARNING] Could not write to log file: {e}")
 
 # ─────────────────────────────────────────────────────────────
 #  DEDUPLICATION DATABASE
@@ -172,8 +148,11 @@ class SeenJobsDB:
         return {"jobs": {}, "total_processed": 0}
 
     def _save(self):
-        with open(self.filepath, "w") as f:
-            json.dump(self.db, f, indent=2)
+        try:
+            with open(self.filepath, "w") as f:
+                json.dump(self.db, f, indent=2)
+        except Exception as e:
+            log(f"[WARNING] Could not save dedup DB: {e}")
 
     def _key(self, job):
         raw = f"{job.get('title','').lower().strip()}|{job.get('company','').lower().strip()}|{job.get('location','').lower().strip()}"
@@ -197,36 +176,50 @@ class SeenJobsDB:
         return len(self.db["jobs"])
 
 # ─────────────────────────────────────────────────────────────
-#  FETCH JOBS FROM JSEARCH API
+#  FETCH JOBS FROM JSEARCH API (WITH TIMEOUT & RETRY)
 # ─────────────────────────────────────────────────────────────
 def fetch_jobs(query: str, location: str, api_key: str) -> List[Dict]:
-    """Fetch jobs from JSearch API."""
+    """Fetch jobs from JSearch API with timeout and retry logic."""
     url = "https://jsearch.p.rapidapi.com/search"
     headers = {
         "x-rapidapi-key": api_key,
         "x-rapidapi-host": "jsearch.p.rapidapi.com"
     }
-    
-    search_query = f"{query} {location}"
     params = {
-        "query": search_query,
-        "page": "1",
-        "num_pages": "1",
+        "query": f"{query} in {location}",
         "date_posted": CONFIG["date_posted"],
-        "country": "us",
-        "employment_types": CONFIG["employment_types"]
+        "employment_types": CONFIG["employment_types"],
+        "page": 1,
+        "num_pages": 1,
     }
     
-    try:
-        r = requests.get(url, headers=headers, params=params, timeout=15)
-        if r.status_code == 200:
-            return r.json().get("data", [])
-        elif r.status_code == 429:
-            log("  ⚠ Rate limit. Waiting 60s...")
-            time.sleep(60)
-            return fetch_jobs(query, location, api_key)
-    except Exception as e:
-        log(f"  ✗ Request error: {e}")
+    for attempt in range(CONFIG["max_retries"]):
+        try:
+            response = requests.get(
+                url, 
+                headers=headers, 
+                params=params,
+                timeout=CONFIG["api_timeout"]  # 15-second timeout
+            )
+            
+            if response.status_code == 200:
+                return response.json().get("data", [])
+            elif response.status_code == 429:  # Rate limited
+                log(f"[RATE LIMIT] API rate limited. Skipping this search.")
+                return []
+            else:
+                log(f"[ERROR] API returned {response.status_code}")
+                return []
+                
+        except requests.Timeout:
+            log(f"[TIMEOUT] API request timed out (attempt {attempt + 1}/{CONFIG['max_retries']})")
+            if attempt < CONFIG["max_retries"] - 1:
+                continue
+            return []
+        except Exception as e:
+            log(f"[ERROR] Failed to fetch jobs: {str(e)[:100]}")
+            return []
+    
     return []
 
 # ─────────────────────────────────────────────────────────────
@@ -321,37 +314,37 @@ def save_to_csv(jobs: List[Dict], filepath: str):
     
     file_exists = Path(filepath).exists()
     
-    with open(filepath, "a", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        if not file_exists:
-            writer.writeheader()
-        
-        for job in jobs:
-            writer.writerow({k: job.get(k, "") for k in fieldnames})
+    try:
+        with open(filepath, "a", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            if not file_exists:
+                writer.writeheader()
+            
+            for job in jobs:
+                writer.writerow({k: job.get(k, "") for k in fieldnames})
+    except Exception as e:
+        log(f"[ERROR] Failed to save CSV: {e}")
 
 # ─────────────────────────────────────────────────────────────
-#  MAIN JOB SCRAPING FUNCTION
+#  MAIN JOB SCRAPING FUNCTION (ONE-TIME RUN)
 # ─────────────────────────────────────────────────────────────
 def scrape_jobs():
-    """Main job scraping function."""
-    if not is_business_hours():
-        log(f"Outside business hours (9 AM - 5 PM). Next run at {get_next_run_time().strftime('%H:%M')}")
-        return
-    
+    """Main job scraping function - runs once per execution."""
     log("=" * 60)
-    log("JOB SEARCH AGENT v5.0 — Scheduled Run")
+    log("JOB SEARCH AGENT v5.0 — Single Run")
     log("=" * 60)
     
     # Validate API keys
     if not CONFIG["jsearch_api_key"]:
         log("✗ ERROR: JSEARCH_API_KEY not set. Exiting.")
-        return
+        sys.exit(1)
     
     # Initialize dedup database
     seen_db = SeenJobsDB(CONFIG["seen_jobs_db"])
     log(f"Dedup DB: {seen_db.total_seen()} jobs already seen")
     
     all_new_jobs = []
+    queries_attempted = 0
     
     # Search all role + location combinations
     for role, role_info in JOB_ROLES.items():
@@ -359,76 +352,72 @@ def scrape_jobs():
         
         for location in CONFIG["locations"]:
             for query in role_info["queries"]:
-                log(f"  Searching: '{query}' in {location}")
+                queries_attempted += 1
+                log(f"  [{queries_attempted}] Searching: '{query}' in {location}...")
                 
-                raw_jobs = fetch_jobs(query, location, CONFIG["jsearch_api_key"])
+                try:
+                    raw_jobs = fetch_jobs(query, location, CONFIG["jsearch_api_key"])
+                    
+                    for raw in raw_jobs:
+                        job = parse_job(raw, role)
+                        
+                        # Skip if already seen
+                        if seen_db.is_seen(job):
+                            continue
+                        
+                        # Classify experience level
+                        exp_level = classify_experience(job)
+                        job["experience_level"] = exp_level
+                        
+                        # Filter by target experience levels
+                        if exp_level not in TARGET_EXPERIENCE_LEVELS:
+                            continue
+                        
+                        # Check visa sponsorship and job type
+                        visa_info = check_visa_sponsorship(job)
+                        job_type = check_job_type(job)
+                        job["visa_sponsorship"] = visa_info
+                        job["job_type"] = job_type
+                        
+                        # FILTER: Only include jobs that sponsor H-1B OR are C2C
+                        if not visa_info and job_type != "C2C/Contract":
+                            continue
+                        
+                        # Mark as seen and add to results
+                        seen_db.mark_seen(job)
+                        all_new_jobs.append(job)
+                        
+                        log(f"    ✓ {job['title']} @ {job['company']} ({exp_level})")
                 
-                for raw in raw_jobs:
-                    job = parse_job(raw, role)
-                    
-                    # Skip if already seen
-                    if seen_db.is_seen(job):
-                        continue
-                    
-                    # Classify experience level
-                    exp_level = classify_experience(job)
-                    job["experience_level"] = exp_level
-                    
-                    # Filter by target experience levels
-                    if exp_level not in TARGET_EXPERIENCE_LEVELS:
-                        continue
-                    
-                    # Check visa sponsorship and job type
-                    visa_info = check_visa_sponsorship(job)
-                    job_type = check_job_type(job)
-                    job["visa_sponsorship"] = visa_info
-                    job["job_type"] = job_type
-                    
-                    # FILTER: Only include jobs that sponsor H-1B OR are C2C
-                    if not visa_info and job_type != "C2C/Contract":
-                        continue
-                    
-                    # Mark as seen and add to results
-                    seen_db.mark_seen(job)
-                    all_new_jobs.append(job)
-                    
-                    log(f"    ✓ {job['title']} @ {job['company']} ({exp_level})")
+                except Exception as e:
+                    log(f"    ✗ Error processing this search: {str(e)[:80]}")
+                    continue
     
     # Save results
+    log(f"\n{'=' * 60}")
     if all_new_jobs:
-        log(f"\n✓ Found {len(all_new_jobs)} new jobs")
+        log(f"✓ Found {len(all_new_jobs)} new jobs")
         save_to_csv(all_new_jobs, CONFIG["output_csv"])
         log(f"✓ Saved to {CONFIG['output_csv']}")
         log(f"Total jobs in database: {seen_db.total_seen()}")
     else:
-        log(f"\n✗ No new jobs found (Total in database: {seen_db.total_seen()})")
+        log(f"✗ No new jobs found (Total in database: {seen_db.total_seen()})")
     
     log("=" * 60)
-    log("Run Complete")
+    log("✓ Run Complete - Script will exit")
     log("=" * 60)
 
 # ─────────────────────────────────────────────────────────────
-#  SCHEDULER
+#  ENTRY POINT
 # ─────────────────────────────────────────────────────────────
-def start_scheduler():
-    """Start the job scheduler."""
-    log("🚀 JOB SEARCH AGENT SCHEDULER STARTED")
-    log(f"⏰ Schedule: 9 AM - 5 PM daily")
-    log(f"⏱ Interval: Every {CONFIG['run_interval']} minutes during business hours")
-    log("=" * 60)
-    
-    # Schedule job to run every hour during business hours
-    schedule.every(CONFIG["run_interval"]).minutes.do(scrape_jobs)
-    
-    # Keep scheduler running
-    while True:
-        schedule.run_pending()
-        time.sleep(60)  # Check every minute if a job needs to run
-
 if __name__ == "__main__":
     try:
-        start_scheduler()
+        scrape_jobs()
+        log("✓ Job search agent finished successfully")
+        sys.exit(0)  # Explicit exit
     except KeyboardInterrupt:
-        log("\n⏹ Scheduler stopped by user")
+        log("⏹ Script interrupted by user")
+        sys.exit(0)
     except Exception as e:
-        log(f"✗ Error: {e}")
+        log(f"✗ Critical error: {e}")
+        sys.exit(1)
