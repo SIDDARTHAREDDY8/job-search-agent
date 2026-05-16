@@ -1,13 +1,14 @@
 name: Job Search Agent - Daily Run
 on:
   schedule:
-    # Run at 9 AM UTC (adjust timezone as needed)
+    # Run at 9 AM UTC daily
     - cron: '0 9 * * *'
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
   scrape-jobs:
     runs-on: ubuntu-latest
+    timeout-minutes: 15  # Kill entire job after 15 minutes
     
     steps:
       - name: Checkout code
@@ -21,15 +22,30 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests schedule
+          pip install requests
       
       - name: Run job search agent
+        timeout-minutes: 10  # Kill this step after 10 minutes
         env:
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
           HUNTER_API_KEY: ${{ secrets.HUNTER_API_KEY }}
-        run: python job_search_agent_scheduled.py
+        run: |
+          echo "Starting job search agent..."
+          python job_search_agent_scheduled.py
+          echo "Job search agent completed"
+      
+      - name: Check results
+        if: always()
+        run: |
+          echo "=== Run Log ==="
+          cat run_log_scheduled.txt || echo "No log file found"
+          echo ""
+          echo "=== CSV Preview ==="
+          head -5 jobs_scheduled.csv || echo "No CSV file found"
       
       - name: Commit and push results
+        if: always()
+        timeout-minutes: 3
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -38,6 +54,7 @@ jobs:
           git push
       
       - name: Upload results as artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: job-results
