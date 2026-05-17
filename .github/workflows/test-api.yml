@@ -1,0 +1,25 @@
+name: Test JSearch API
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install requests
+        run: pip install requests
+      
+      - name: Test API
+        env:
+          JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
+        run: python test_api.py
