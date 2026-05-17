@@ -2,20 +2,24 @@ name: Job Search Agent - Daily Run
 
 on:
   schedule:
-    # Run at 9 AM UTC daily
     - cron: '0 9 * * *'
   workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   scrape-jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
       
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -37,27 +41,51 @@ jobs:
       - name: Check results
         if: always()
         run: |
-          echo "=== Run Log (Last 20 lines) ==="
-          tail -20 run_log_scheduled.txt 2>/dev/null || echo "No log file"
+          echo "=== Files Created ==="
+          ls -lah jobs_scheduled.csv run_log_scheduled.txt seen_jobs_scheduled.json 2>/dev/null || echo "Files not found"
           echo ""
-          echo "=== Jobs Found ==="
+          echo "=== Run Log (Last 20 lines) ==="
+          tail -20 run_log_scheduled.txt 2>/dev/null || echo "No log"
+          echo ""
+          echo "=== Jobs Count ==="
           if [ -f jobs_scheduled.csv ]; then
-            JOBS_COUNT=$(tail -n +2 jobs_scheduled.csv | wc -l)
-            echo "Total jobs in CSV: $JOBS_COUNT"
-            echo "First 3 jobs:"
-            head -4 jobs_scheduled.csv | tail -3
+            JOBS_COUNT=$(tail -n +2 jobs_scheduled.csv 2>/dev/null | wc -l)
+            echo "✅ Total jobs: $JOBS_COUNT"
           else
-            echo "No jobs CSV found"
+            echo "❌ jobs_scheduled.csv not found"
           fi
+      
+      - name: Configure git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global credential.helper store
       
       - name: Commit and push
         if: always()
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --quiet --cached || git commit -m "Daily job scrape - $(date +'%Y-%m-%d %H:%M:%S UTC')"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main 2>&1 || echo "Git push completed"
+          echo "=== Git Status Before ==="
+          git status
+          
+          echo ""
+          echo "=== Adding files ==="
+          git add jobs_scheduled.csv run_log_scheduled.txt seen_jobs_scheduled.json
+          
+          echo ""
+          echo "=== Git Status After Add ==="
+          git status
+          
+          echo ""
+          echo "=== Committing ==="
+          git diff --cached --stat
+          git commit -m "Daily job scrape - $(date +'%Y-%m-%d %H:%M:%S UTC')" || echo "No changes to commit"
+          
+          echo ""
+          echo "=== Pushing to main ==="
+          git push origin main -v
+          
+          echo ""
+          echo "✅ Push completed successfully"
       
       - name: Upload artifact
         if: always()
@@ -76,17 +104,14 @@ jobs:
           echo "## 📊 Job Search Agent Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           if [ -f jobs_scheduled.csv ]; then
-            JOBS_COUNT=$(tail -n +2 jobs_scheduled.csv | wc -l)
+            JOBS_COUNT=$(tail -n +2 jobs_scheduled.csv 2>/dev/null | wc -l)
             echo "✅ **Jobs Found:** $JOBS_COUNT" >> $GITHUB_STEP_SUMMARY
+            echo "📥 **Download:** Check Artifacts section below" >> $GITHUB_STEP_SUMMARY
           else
-            echo "❌ **No new jobs found today**" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️ **No CSV file created** (check logs)" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "📁 **Files Generated:**" >> $GITHUB_STEP_SUMMARY
-          echo "- \`jobs_scheduled.csv\` - All job listings" >> $GITHUB_STEP_SUMMARY
-          echo "- \`run_log_scheduled.txt\` - Execution log" >> $GITHUB_STEP_SUMMARY
-          echo "- \`seen_jobs_scheduled.json\` - Deduplication database" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "🔗 **Access Results:**" >> $GITHUB_STEP_SUMMARY
-          echo "1. [View jobs_scheduled.csv in repo](https://github.com/${{ github.repository }}/blob/main/jobs_scheduled.csv)" >> $GITHUB_STEP_SUMMARY
-          echo "2. Download from artifacts (see above)" >> $GITHUB_STEP_SUMMARY
+          echo "📁 **Files to be committed:**" >> $GITHUB_STEP_SUMMARY
+          echo "- \`jobs_scheduled.csv\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`run_log_scheduled.txt\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`seen_jobs_scheduled.json\`" >> $GITHUB_STEP_SUMMARY
