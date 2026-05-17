@@ -46,6 +46,10 @@ def log(msg):
     except:
         pass
 
+def log_inline(msg):
+    """Log without newline"""
+    print(msg, end="")
+
 class SeenJobsDB:
     """Deduplication database"""
     def __init__(self, filepath):
@@ -184,7 +188,7 @@ def scrape_jobs():
         
         for location in CONFIG["locations"]:
             for query in queries:
-                log(f"  Searching: '{query}' in {location}...", end="")
+                log(f"  Searching: '{query}' in {location}...")
                 
                 raw_jobs = fetch_jobs(query, location)
                 total_api_results += len(raw_jobs)
@@ -201,7 +205,7 @@ def scrape_jobs():
                     seen_db.mark_seen(job)
                     all_new_jobs.append(job)
                 
-                log(f" Found {len(raw_jobs)} ({len([j for j in all_new_jobs if j['role'] == role])} new)")
+                log(f"    Found {len(raw_jobs)} jobs ({len([j for j in all_new_jobs if j['role'] == role])} new)")
     
     log(f"\n{'=' * 70}")
     log(f"Total API results: {total_api_results}")
