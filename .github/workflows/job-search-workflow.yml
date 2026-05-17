@@ -1,18 +1,21 @@
 name: Job Search Agent - Daily Run
+
 on:
   schedule:
     # Run at 9 AM UTC daily
     - cron: '0 9 * * *'
-  workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch:
 
 jobs:
   scrape-jobs:
     runs-on: ubuntu-latest
-    timeout-minutes: 15  # Kill entire job after 15 minutes
+    timeout-minutes: 15
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -25,39 +28,35 @@ jobs:
           pip install requests
       
       - name: Run job search agent
-        timeout-minutes: 10  # Kill this step after 10 minutes
+        timeout-minutes: 10
         env:
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
           HUNTER_API_KEY: ${{ secrets.HUNTER_API_KEY }}
-        run: |
-          echo "Starting job search agent..."
-          python job_search_agent_scheduled.py
-          echo "Job search agent completed"
+        run: python job_search_agent_scheduled.py
       
       - name: Check results
         if: always()
         run: |
           echo "=== Run Log ==="
-          cat run_log_scheduled.txt || echo "No log file found"
+          tail -20 run_log_scheduled.txt 2>/dev/null || echo "No log file"
           echo ""
           echo "=== CSV Preview ==="
-          head -5 jobs_scheduled.csv || echo "No CSV file found"
+          head -5 jobs_scheduled.csv 2>/dev/null || echo "No CSV file"
       
-      - name: Commit and push results
+      - name: Commit and push
         if: always()
-        timeout-minutes: 3
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Daily job scrape - $(date)" || echo "No changes to commit"
-          git push
+          git diff --quiet --cached || git commit -m "Daily job scrape - $(date +'%Y-%m-%d %H:%M:%S UTC')"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main 2>&1 || echo "Git push completed (may have skipped if no changes)"
       
-      - name: Upload results as artifact
+      - name: Upload artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: job-results
+          name: job-results-${{ github.run_id }}
           path: |
             jobs_scheduled.csv
             run_log_scheduled.txt
