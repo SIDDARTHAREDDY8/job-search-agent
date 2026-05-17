@@ -71,11 +71,11 @@ git push origin main
 
 **Secret 1:**
 - Name: `JSEARCH_API_KEY`
-- Value: `da6aa5606fmshce43136a887a043p1304d5jsn4b06466d4389`
+- Value: ``
 
 **Secret 2:**
 - Name: `HUNTER_API_KEY`
-- Value: `047c845fdefd22d5264d5e81ee943729e4783971`
+- Value: ``
 
 ### Step 5: Enable GitHub Actions
 1. Go to **Actions** tab in your repository
