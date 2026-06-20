@@ -2943,6 +2943,490 @@
     "9f331e1e0cb7f28fbfcfd2bc10f7aa70": {
       "title": "Principal Business Intell. Analyst, Power BI",
       "company": "Johnson Controls"
+    },
+    "e57ca3b386ea28681dc698f2fd3f1237": {
+      "title": ".NET Full Stack Developer",
+      "company": "Jupiter IT Solutions LLC"
+    },
+    "aef8d9f6feb910aaab718028a9a74be8": {
+      "title": "Full Stack.NET Developer",
+      "company": "Ringside Talent Acquisition Partners"
+    },
+    "178a9ec4af0d166ecf1437c764d4cab0": {
+      "title": "Senior Full Stack Dev - Headless CMS & DevOps Lead (Remote)",
+      "company": "ELA Container GmbH"
+    },
+    "375f44cbbaff2fb9e38105aae4cb56c2": {
+      "title": ".NET Full Stack Developer",
+      "company": "Jobs via Dice"
+    },
+    "091dd55248e1883b441cec9f05b1c27c": {
+      "title": "Senior Full Stack Java Developer (Java, React/Node.js, AWS)",
+      "company": "Jobs via Dice"
+    },
+    "36fbdd08927093e25062397cfcd7a8f4": {
+      "title": "Full Stack Developer",
+      "company": "Syms Strategic Group, LLC (SSG)"
+    },
+    "83636c110103039bfba6e626ae8d6cac": {
+      "title": "Full Stack Developer",
+      "company": "Intelliforce-IT Solutions Group, LLC."
+    },
+    "fbbe191e3d99d7453e30b5c9e8f2fc34": {
+      "title": "Full Stack Software Developer",
+      "company": "Booz Allen Hamilton"
+    },
+    "9502f339c0302c36825070e2f0575b68": {
+      "title": "Sr. Full Stack Developer (Java, React, Typescript)",
+      "company": "Jobs via Dice"
+    },
+    "e5ed71c8ebbcf8f1bdd7ca39f77640cd": {
+      "title": "Java Full Stack Developer \u2013 Spring Boot & AWS - Onsite,In person interview (Within 100 miles of Richmond, VA only)",
+      "company": "MSYS Inc."
+    },
+    "b90b6e2216741ef71d2dba04910dee5d": {
+      "title": "Full-Stack Web Developer \u2014 Backend, Hosting & Light Front-End Updates",
+      "company": "Upwork"
+    },
+    "b2410ad7c48405785810c2c986a0e3c5": {
+      "title": "Java/Full Stack Developer (REMOTE EST)",
+      "company": "Hansen Talent Group"
+    },
+    "261645ec5f3f709fc89020c704ba288b": {
+      "title": "Full stack Developer",
+      "company": "Ruri Software Technologies LLC"
+    },
+    "a1476eed6108f940b47ba035693fdfb6": {
+      "title": "Full Stack Developer - Mobile and Web full stack developer",
+      "company": "Jobs via Dice"
+    },
+    "2cb3127287c71324b4908dc7c6f94995": {
+      "title": "Full Stack Developer",
+      "company": "GEHA Health"
+    },
+    "311a4ec5d76517c9df1ea9ead285c64a": {
+      "title": "Principal Full-Stack Engineer, TS/SCI w/ Full Scope Poly",
+      "company": "The MITRE Corporation"
+    },
+    "b3e935420c8e6595fd967dae561b7bd3": {
+      "title": "Full-Stack Java Developer (AWS & Migration)",
+      "company": "Jobs via Dice"
+    },
+    "1bbdcaa9a344fb68b0743c17cde3beb7": {
+      "title": "Java Full Stack Engineer (US Citizens or Green Card Holders)",
+      "company": "Collaborate Solutions, Inc"
+    },
+    "d4203024f4c7e85ddcb2363a1a69ef00": {
+      "title": "Full-stack Software Engineer",
+      "company": "SoTalent"
+    },
+    "406d7df0578852e0eae52b41704da2e6": {
+      "title": "Software Dev Engineer - Full Stack, GenAIUX",
+      "company": "Amazon Web Services (AWS)"
+    },
+    "b5c7809b1f6cd5d8bab585b996609b9b": {
+      "title": "Lead Software Engineer",
+      "company": "JPMorgan Chase"
+    },
+    "7ed81632fb354b92dc45abb7581fe63d": {
+      "title": "Software Engineer, Fintech",
+      "company": "Optasia"
+    },
+    "d7be2128d6711e35fc3bd888b45aff28": {
+      "title": "Engineer II",
+      "company": "cGMP Consulting Inc."
+    },
+    "bd9f85be10c4d0e9cc106cf9d5a9e10c": {
+      "title": "Angular Frontend Software Developer",
+      "company": "EUROPEAN DYNAMICS"
+    },
+    "91cfb2acd688694af732d43e8e295135": {
+      "title": "Staff Development Engineer - Fulfillment",
+      "company": "CVS Health"
+    },
+    "f287e2d3a97ac2fb5bf3aa6ad5160dd9": {
+      "title": "Senior .NET Software Developer",
+      "company": "Novibet"
+    },
+    "eb58a8482f74b022d334da41b7f3f4ba": {
+      "title": "Sr. Solutions Engineer",
+      "company": "Databricks"
+    },
+    "775a5e4eb666bbad09b79f2c8c175b74": {
+      "title": "Senior Backend Engineer (Python) - Full-time",
+      "company": "EUROPEAN DYNAMICS"
+    },
+    "8eb966e16d9bbc91b95b3242a87272ac": {
+      "title": "Procter & Gamble is hiring: Software Engineer - One Digital Warehouse in Cincinnati",
+      "company": "Procter & Gamble"
+    },
+    "79e077e604264e5427c1b74eacbe9334": {
+      "title": "GEN AI Developer",
+      "company": "Tata Consultancy Services"
+    },
+    "8b02ebc4b019fa6a2217162cf3f93242": {
+      "title": "Software Engineer - Digital Warehouse Solutions. Job in Cincinnati Top Essex Careers",
+      "company": "Procter & Gamble"
+    },
+    "27c9f51d811be389054e1ea928c4c624": {
+      "title": "AIML Engineer",
+      "company": "Tata Consultancy Services"
+    },
+    "3b5efb76cc6cf1a81043e462624008be": {
+      "title": "CAD Automation Engineer",
+      "company": "Innomotics"
+    },
+    "a7cda004f79222d3a6b5469045f3e381": {
+      "title": "Sr. Solutions Engineer",
+      "company": "Databricks"
+    },
+    "d459e1e6cd8a1ad194de5e78150980f0": {
+      "title": "Sr. Product Engineer",
+      "company": "Prodigy"
+    },
+    "30f619e4e7ef5f1e7587c3b5f77e5ad7": {
+      "title": "Pega Systems Analyst",
+      "company": "VeriiPro"
+    },
+    "4a91ce954a3750c40fc691e55cb5bbd0": {
+      "title": "Director, Application Development",
+      "company": "Western & Southern Financial Group"
+    },
+    "d62901b6c7547cc623e50c1d1c5d73e1": {
+      "title": "Procter & Gamble is hiring: Software Engineer - One Digital Warehouse in Saint Bernard",
+      "company": "Procter & Gamble"
+    },
+    "adbff5bf86093f08d20972efad4e5311": {
+      "title": "Director, Application Development - Salesforce",
+      "company": "Western & Southern Financial Group"
+    },
+    "d209ed1d868f36925b6d29196be39926": {
+      "title": "Senior Datadog Engineer - NO C2C",
+      "company": "Aptonet"
+    },
+    "ab2121048c0d7afd773ad5c70d29137c": {
+      "title": "Software Engineer - New Jersey",
+      "company": "Serco USA"
+    },
+    "4364dfd96ac9b75eff7d68c4de2668a1": {
+      "title": "Entry Level Software Engineer - Manassas, VA",
+      "company": "VetJobs"
+    },
+    "6ea00a5ec0a0563a43b5b53719ed02cd": {
+      "title": "Software Engineer 2 - (AWS, Kubernetes, Python)",
+      "company": "Akina, Inc"
+    },
+    "7a3e02e8c9188bd9eec546e1931d8524": {
+      "title": "Semiconductor Software Engineer",
+      "company": "Bright Vision Technologies"
+    },
+    "8dda9e795e5c94fba5d7270cb5889c3c": {
+      "title": "Software Engineer in Test",
+      "company": "Smart IT Frame LLC"
+    },
+    "62f5e71e05165017bdd89832093cf71e": {
+      "title": "ServiceNow Developer",
+      "company": "Bright Vision Technologies"
+    },
+    "211980660a5e1ed15537bdbd32f93a8b": {
+      "title": "Intermediate Software Developer",
+      "company": "The MITRE Corporation"
+    },
+    "77322a1298a26dec9cb21404440227e9": {
+      "title": "Entegral Software Engineer - .Net / C#",
+      "company": "Enterprise Mobility"
+    },
+    "809b6109eeb3f216d60cb4f958da0510": {
+      "title": "Software Engineer ($130k-$180k + Equity) at well-funded legal tech AI startup",
+      "company": "Jack & Jill"
+    },
+    "72119e2e8d3d08b9f9fd1e1fb36fbfc8": {
+      "title": "Embedded Software Engineer- (Single US Citizen only)",
+      "company": "InfoStride"
+    },
+    "667efe937732a8aeebeaee88dcb1fa9d": {
+      "title": "Senior Full-Stack Developer (Python & Vue/React/Angular)",
+      "company": "Pacer Group"
+    },
+    "02ba8890710dac8fe1651c4021e59bbc": {
+      "title": "Senior.NET Open Source Engineer - Elevate Dev Experience",
+      "company": "United States Digital Space LLC"
+    },
+    "591831c8d798e02d4eee56ab8d15bf6d": {
+      "title": "Frontend Engineer - AI Coding Expert",
+      "company": "Mercor"
+    },
+    "f7579c66635793ea5c392c724f0134b8": {
+      "title": "Platform Engineer \u2013 Quant Fund - Up to $240,000 - Starting base + Exceptional benefits/bonus package Fund \u2013 New York",
+      "company": "Hunter Bond"
+    },
+    "1a44cbe242c1d6001d1e5118ca344dc7": {
+      "title": "Software Engineer, Backend, Level 5",
+      "company": "Snap Inc."
+    },
+    "6453e62645a4d72ba05321c712f0477e": {
+      "title": "Front End Software Engineer",
+      "company": "VirtualVocations"
+    },
+    "5437432dd213fcb7101912029fb454c3": {
+      "title": "Full Stack .NET Developer with Angular",
+      "company": "Prorec Resource Solutions, LLC"
+    },
+    "d5d9a06dd521930b608e22a82e72fc20": {
+      "title": "Azure Data Engineer: Data Pipelines",
+      "company": "Accenture"
+    },
+    "ba8aa689012c4f2a8540dcf10c345de4": {
+      "title": "Senior Data Engineer - Full-time",
+      "company": "Orfium"
+    },
+    "83cfdfed3fc225c38e39fcb456a0cbd4": {
+      "title": "Software Engineer, Senior",
+      "company": "Skyline Scientific"
+    },
+    "eed64e2256aab2a9095c5c56bd16022c": {
+      "title": "Sr Engineer, Business Intelligence",
+      "company": "Ensemble Health Partners"
+    },
+    "4b776ef4e0e53fd75cda3daebd1aaae6": {
+      "title": "Financial Services - Senior - Data Scientist - EDGE",
+      "company": "EY"
+    },
+    "2768392a1a33c07b596a82e4f1a93a6a": {
+      "title": "Paper & Packaging Process Engineer I - Lean & Data-Driven",
+      "company": "Packaging Corporation of America"
+    },
+    "4a924fc556802c74c6daaafed698ef8e": {
+      "title": "Financial Services - Senior - Data Scientist - EDGE",
+      "company": "EY"
+    },
+    "51e697e54728fbdc2dde9668c27a2e2a": {
+      "title": "Data Admin \u2013 Engineering Department",
+      "company": "Manpower"
+    },
+    "f6fb1150fe3a165f27c54c9809456795": {
+      "title": "Data Engineer - Databricks",
+      "company": "Dexian"
+    },
+    "1f0cf3946789a5155f64bffc34183868": {
+      "title": "Data Engineer - Databricks",
+      "company": "Jobs via Dice"
+    },
+    "67fccd24137da44298fbf97c68581616": {
+      "title": "Chief Data Engineer / Senior Architect (TS/SCI Required)",
+      "company": "Praescient Analytics"
+    },
+    "881b2b3cb298f47e47934cc548d49e33": {
+      "title": "Data Engineer | Government Security Clearance Required | Full-time/Permanent Role | IAT Certification Level 2 or above",
+      "company": "Jobs via Dice"
+    },
+    "75dc1d1e29abe351a3f158a044024519": {
+      "title": "Data Engineer (Databricks) - Remote USA",
+      "company": "IIIIIIUS"
+    },
+    "7027bcb6a7c098e0336b3dc3c4dde777": {
+      "title": "Manager, Data Engineer (Remote)",
+      "company": "Arch Capital Group Ltd."
+    },
+    "0c8302702682f7093d258d81951ce9f0": {
+      "title": "Senior AI/ML Data Engineer with AI Platform & RAG Systems",
+      "company": "Jobs via Dice"
+    },
+    "80d3f316513e1be72f2f565d1fce906c": {
+      "title": "Data Engineer Jobs",
+      "company": "SciTec, Inc."
+    },
+    "9124025a8bf7ca1585091ee57b0c8af7": {
+      "title": "Data Engineer(W2 Role) Need Walmart Previous exp candidate",
+      "company": "Galaxy Infotech INC"
+    },
+    "199faa0c7fdb3207257401c70188ce4b": {
+      "title": "Cleared - Data Engineer (Multiple Levels)",
+      "company": "Noblis"
+    },
+    "3c195fdbc20e61471a790e6e1672ea01": {
+      "title": "Data Engineer (Edify)",
+      "company": "EAB"
+    },
+    "809f04e9ea2bd41fb6520e1e2487b9d4": {
+      "title": "ETL Matillion Admin",
+      "company": "Centraprise"
+    },
+    "afd93a150e92f69ac4d942fb5898d414": {
+      "title": "AIA LS ETL DEVELOPER",
+      "company": "Avani Technology Solutions, Inc."
+    },
+    "98109b866e8c84230be6d79754be6213": {
+      "title": "SQL / SSIS Developer",
+      "company": "Holistic Partners, Inc"
+    },
+    "60d4af637d479b108abf34610d7b6b4f": {
+      "title": "IICS Developer",
+      "company": "Jobs via Dice"
+    },
+    "20bb977bb0c3a52f577b57ea98a6b5ef": {
+      "title": "Manager, Data Engineer (Remote)",
+      "company": "Arch Capital Group Ltd."
+    },
+    "fc23336feea819084ccebc7c679efb79": {
+      "title": "Remote PL\u200b/SQL & ETL Developer; Informatica\u200b/SnapLogic",
+      "company": "vmysmartpros"
+    },
+    "24f29311500d19f74567dadeaa3bbe32": {
+      "title": "Entry-Level BI Analyst Cross-Functional Insights",
+      "company": "Crane Co."
+    },
+    "b0ca1d7bffd15e72bb9751fb6faffe70": {
+      "title": "Procurement Data Analyst",
+      "company": "Brooksource"
+    },
+    "88653a9b53933c4ebb170c36b73bb75e": {
+      "title": "Junior Business Intelligence Analyst",
+      "company": "Emerald Resource Group"
+    },
+    "e1a7db4720ff274b4ef13a658fb14f7a": {
+      "title": "Central Ohio Transit Authority is hiring: Lead Data Analyst in Columbus",
+      "company": "Central Ohio Transit Authority"
+    },
+    "29a589f4414dc5cf839b677039606b64": {
+      "title": "Data Scientist - Full-time",
+      "company": "Procter & Gamble"
+    },
+    "2d84065e18d18872deda46a936eaea7d": {
+      "title": "API Analyst",
+      "company": "Olik Global"
+    },
+    "857a9cc80f5d79c1f8b2f92d64074641": {
+      "title": "IT Asset Analyst",
+      "company": "Connection"
+    },
+    "948bf85e30c9d71b878d939c0359c9c5": {
+      "title": "Retail Data & Operations Analyst (Power BI)",
+      "company": "Delphos Wireless - Cricket Authorized Retailer"
+    },
+    "4bd58df0883c2deb6917ec9333326375": {
+      "title": "Entry Level/No Experience Data Entry",
+      "company": "Apex Focus Group"
+    },
+    "18ea353760f6bc92e702502e7bf77b69": {
+      "title": "Billing Analyst",
+      "company": "Genpact"
+    },
+    "a104752308d1e53c72cf62186c88642f": {
+      "title": "CRM Systems Analysts",
+      "company": "The Planet Group"
+    },
+    "06f017dfd0598ce485ec12b3a0665000": {
+      "title": "Senior Analyst US Healthcare Payer Domain",
+      "company": "Tata Consultancy Services"
+    },
+    "24eca7e7a6a97e6461796fa854a55a91": {
+      "title": "Data Privacy Lead Analyst - C13 - FLORENCE",
+      "company": "Citi"
+    },
+    "78d656583534a3872cb27a9ba0535b89": {
+      "title": "Cyber Threat Response Analyst",
+      "company": "Centraprise"
+    },
+    "7996ffcca1107f81a97865fe99bc46b1": {
+      "title": "Strategic Business Analyst: Bridge Stakeholders & Tech Solutions",
+      "company": "Brooksource"
+    },
+    "389f8164d7560cc28593c843dd7adec4": {
+      "title": "Capital Planning Analyst III",
+      "company": "Fifth Third Bank"
+    },
+    "8e2c2633d0debadc2d3bc3b33f17793e": {
+      "title": "Senior Analyst Pharmacy (PBM)",
+      "company": "Tata Consultancy Services"
+    },
+    "6679a3f3c5b21442fb726e3c76f6f1c8": {
+      "title": "Senior Pricing Analyst",
+      "company": "Troutman Pepper Locke LLP"
+    },
+    "45023a5b7518ee26e1c4d53531442d31": {
+      "title": "Management and Program Analyst.",
+      "company": "Obsolete Site"
+    },
+    "65b2e6a53da83aae2afe64b186d3329c": {
+      "title": "Senior Financial Analyst Job at Rainmaker Resources, LLC in Cincinnati",
+      "company": "Rainmaker Resources, LLC"
+    },
+    "35e4fdf11b723b153ca65cd190944716": {
+      "title": "Data Analyst - Now Hiring",
+      "company": "BOOZ, ALLEN & HAMILTON, INC."
+    },
+    "868956dd4240f3a45fd2738ce32370a8": {
+      "title": "Operations Data Analyst",
+      "company": "Capital i"
+    },
+    "6238a24d3328c587e32be36a5dc4e432": {
+      "title": "Intermediate Professional, Data Science",
+      "company": "WSP in the U.S."
+    },
+    "37455b530491fde18c07c92c601d114e": {
+      "title": "Data Analyst",
+      "company": "Robert Half"
+    },
+    "209ac7da52254bc857fbc18c7e7668b2": {
+      "title": "Crown & Bridge Data Entry Analyst",
+      "company": "The Aspen Group"
+    },
+    "5a88c27afe88b8742b49bfa62cd6ecfe": {
+      "title": "Data Analyst - Remote (Local to AZ only with in-person interview)",
+      "company": "frontendnode-production.up.railway.app"
+    },
+    "c562ab589072caff01feefa27ab849b1": {
+      "title": "Onsite Interview - ETL Integration Analyst - NY",
+      "company": "Jobs via Dice"
+    },
+    "2b709bc59e8fa7f57cceafc57a94cd93": {
+      "title": "Data and Analytics",
+      "company": "Jobs via Dice"
+    },
+    "4a3448823fe96843341e8f9d62bf61fc": {
+      "title": "Sr. Analyst \u2013 Data, Systems and Compliance",
+      "company": "BorgWarner"
+    },
+    "2133350204327221f284cdbe2d486c30": {
+      "title": "Digital Commerce Data Analyst",
+      "company": "Rose International"
+    },
+    "ade48682aed014e939f729c8da5af627": {
+      "title": "Business Analyst (Capital Markets)",
+      "company": "Papigen"
+    },
+    "593a6fa941d9d928e8a6802be8f70951": {
+      "title": "Business Contracts Analyst, WWPS Business Contracts",
+      "company": "Amazon Web Services (AWS)"
+    },
+    "581e2ae7fe0c0d72eea3fdc7837ebcb0": {
+      "title": "Associate Business Analyst",
+      "company": "UST"
+    },
+    "6a9c758ddb6ec3eb676a6168f651deb9": {
+      "title": "Business Analyst (Developer Experience / DevSecOps Platform)",
+      "company": "Suniksha Technologies LLC"
+    },
+    "3c36cb9e8e747921b7c325252684f211": {
+      "title": "Business Analyst (Senior)",
+      "company": "Vantor"
+    },
+    "317893ec7d1c460abb8ec65d07c2c12f": {
+      "title": "Business Systems Analyst",
+      "company": "Trelleborg Sealing Solutions"
+    },
+    "1cb26ccc62a63746bee8c26db5d1ceb3": {
+      "title": "Business Process Analyst",
+      "company": "Randstad USA"
+    },
+    "4e4dac4c298295e9a94c893d3fbb7186": {
+      "title": "Strategic Business Analyst: Turn Requirements into Solutions",
+      "company": "TradeJobsWorkForce"
+    },
+    "8bf25fc3a5eb24eed83fb24199ddd9a1": {
+      "title": "Business Intelligence Analyst - NJ locals Hybrid",
+      "company": "Jobs via Dice"
     }
   }
 }
