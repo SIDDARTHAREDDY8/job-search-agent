@@ -6597,3 +6597,90 @@
 [2026-09-15 14:05:33] ======================================================================
 [2026-09-15 14:05:33] ✓ Run Complete
 [2026-09-15 14:05:33] ======================================================================
+[2026-09-16 13:55:04] ======================================================================
+[2026-09-16 13:55:04] JOB SEARCH AGENT - Starting Scrape
+[2026-09-16 13:55:04] ======================================================================
+[2026-09-16 13:55:04] Previously seen jobs: 2335
+[2026-09-16 13:55:04] 
+▶ Role: Full Stack Developer
+[2026-09-16 13:55:04]   Searching: 'Full Stack Developer' in Ohio, US...
+[2026-09-16 13:55:20]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:55:20]     Found 0 jobs (0 new)
+[2026-09-16 13:55:20]   Searching: 'Full Stack Engineer' in Ohio, US...
+[2026-09-16 13:55:35]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:55:35]     Found 0 jobs (0 new)
+[2026-09-16 13:55:35]   Searching: 'Full Stack Developer' in Cincinnati, Ohio...
+[2026-09-16 13:55:50]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:55:50]     Found 0 jobs (0 new)
+[2026-09-16 13:55:50]   Searching: 'Full Stack Engineer' in Cincinnati, Ohio...
+[2026-09-16 13:55:56]     Found 2 jobs (2 new)
+[2026-09-16 13:55:56]   Searching: 'Full Stack Developer' in USA...
+[2026-09-16 13:56:11]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:56:11]     Found 0 jobs (2 new)
+[2026-09-16 13:56:11]   Searching: 'Full Stack Engineer' in USA...
+[2026-09-16 13:56:23]     Found 10 jobs (12 new)
+[2026-09-16 13:56:23] 
+▶ Role: Software Engineer
+[2026-09-16 13:56:23]   Searching: 'Software Engineer' in Ohio, US...
+[2026-09-16 13:56:38]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:56:38]     Found 0 jobs (0 new)
+[2026-09-16 13:56:38]   Searching: 'Software Developer' in Ohio, US...
+[2026-09-16 13:56:54]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:56:54]     Found 0 jobs (0 new)
+[2026-09-16 13:56:54]   Searching: 'Software Engineer' in Cincinnati, Ohio...
+[2026-09-16 13:57:09]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:57:09]     Found 0 jobs (0 new)
+[2026-09-16 13:57:09]   Searching: 'Software Developer' in Cincinnati, Ohio...
+[2026-09-16 13:57:24]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:57:24]     Found 0 jobs (0 new)
+[2026-09-16 13:57:24]   Searching: 'Software Engineer' in USA...
+[2026-09-16 13:57:39]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:57:39]     Found 0 jobs (0 new)
+[2026-09-16 13:57:39]   Searching: 'Software Developer' in USA...
+[2026-09-16 13:57:54]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:57:54]     Found 0 jobs (0 new)
+[2026-09-16 13:57:54] 
+▶ Role: Data Engineer
+[2026-09-16 13:57:54]   Searching: 'Data Engineer' in Ohio, US...
+[2026-09-16 13:58:09]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:58:09]     Found 0 jobs (0 new)
+[2026-09-16 13:58:09]   Searching: 'ETL Developer' in Ohio, US...
+[2026-09-16 13:58:24]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:58:24]     Found 0 jobs (0 new)
+[2026-09-16 13:58:24]   Searching: 'Data Engineer' in Cincinnati, Ohio...
+[2026-09-16 13:58:40]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:58:40]     Found 0 jobs (0 new)
+[2026-09-16 13:58:40]   Searching: 'ETL Developer' in Cincinnati, Ohio...
+[2026-09-16 13:58:55]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:58:55]     Found 0 jobs (0 new)
+[2026-09-16 13:58:55]   Searching: 'Data Engineer' in USA...
+[2026-09-16 13:59:10]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:59:10]     Found 0 jobs (0 new)
+[2026-09-16 13:59:10]   Searching: 'ETL Developer' in USA...
+[2026-09-16 13:59:15]     Found 0 jobs (0 new)
+[2026-09-16 13:59:15] 
+▶ Role: Data Analyst
+[2026-09-16 13:59:15]   Searching: 'Data Analyst' in Ohio, US...
+[2026-09-16 13:59:19]     Found 3 jobs (2 new)
+[2026-09-16 13:59:19]   Searching: 'Business Analyst' in Ohio, US...
+[2026-09-16 13:59:34]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 13:59:34]     Found 0 jobs (2 new)
+[2026-09-16 13:59:34]   Searching: 'Data Analyst' in Cincinnati, Ohio...
+[2026-09-16 13:59:43]     Found 2 jobs (4 new)
+[2026-09-16 13:59:43]   Searching: 'Business Analyst' in Cincinnati, Ohio...
+[2026-09-16 13:59:51]     Found 3 jobs (6 new)
+[2026-09-16 13:59:51]   Searching: 'Data Analyst' in USA...
+[2026-09-16 14:00:06]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 14:00:06]     Found 0 jobs (6 new)
+[2026-09-16 14:00:06]   Searching: 'Business Analyst' in USA...
+[2026-09-16 14:00:21]   [ERROR] API failed: HTTPSConnectionPool(host='jsearch.p.rapidapi.com', port=443)
+[2026-09-16 14:00:21]     Found 0 jobs (6 new)
+[2026-09-16 14:00:21] 
+======================================================================
+[2026-09-16 14:00:21] Total API results: 20
+[2026-09-16 14:00:21] New jobs found: 18
+[2026-09-16 14:00:21] ✓ Saved 18 jobs to jobs_scheduled.csv
+[2026-09-16 14:00:21] Total jobs in database: 2353
+[2026-09-16 14:00:21] ======================================================================
+[2026-09-16 14:00:21] ✓ Run Complete
+[2026-09-16 14:00:21] ======================================================================
