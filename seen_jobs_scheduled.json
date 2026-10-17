@@ -12127,6 +12127,210 @@
     "24e5ed2c7f76c3092544dcfbf6f5e0ac": {
       "title": "Business Analyst III (US)",
       "company": "Td"
+    },
+    "f0ce00fd7a07cf7142440c2d08b67729": {
+      "title": "Full-Stack Developer Trainee (Internship)",
+      "company": "Threenitas S.A."
+    },
+    "480b571f1722faebbb129d3fdd571a61": {
+      "title": "Software Developer for NLP Solutions - Product Localization",
+      "company": "Siemens Digital Industries Software"
+    },
+    "808ffaa9b8a5e9ae251f7020673557c0": {
+      "title": "Fullstack Engineer- Auth Team",
+      "company": "Alpaca"
+    },
+    "d1ffb1dc9f6bbe26b89f0895bc66bea0": {
+      "title": "Full-Stack Engineer",
+      "company": "Yoh Services LLC"
+    },
+    "6afcec8d92d1450c1285a41526f30652": {
+      "title": "Senior Fullstack Engineer",
+      "company": "Frontdoor, Inc."
+    },
+    "8bb4353dd6da9a59001c2b435c2eaa92": {
+      "title": "Senior Machine Learning Engineer (Traditional ML & Financial Data) - Remote - USA",
+      "company": "FullStack"
+    },
+    "34607ce5595bb956d44a08ba0944a656": {
+      "title": ".Net Web Developer",
+      "company": "TEKsystems"
+    },
+    "02e8cc2ff88ca88fabcf1e1a78c0dc0e": {
+      "title": "Software Engineer II",
+      "company": "Core4ce"
+    },
+    "51ca476fb826cef3ec1388e84bdc17b9": {
+      "title": "Computer Aided Engineering (CAE) Software & System Design Sr Engineer",
+      "company": "American Honda Motor Co., Inc."
+    },
+    "f95488f664307a1f8b89d2e8935c9f5a": {
+      "title": "Senior .NET Developer - Full-time",
+      "company": "EUROPEAN DYNAMICS"
+    },
+    "9acb5856c47ec9f7a1f9ef5bd46c50de": {
+      "title": "Martech Developer- Manager",
+      "company": "PwC"
+    },
+    "097228456e4f82ac335777f198fdf4ac": {
+      "title": "Programmer",
+      "company": "Mancan"
+    },
+    "98d4147753f0911330bf141935c099a1": {
+      "title": "Principal DSP Engineer",
+      "company": "Actalent"
+    },
+    "e776b0674a3930f9278a93f24e1fcda2": {
+      "title": "Salesforce Developer - ONSITE Cincinnati, OH - W2 ONLY",
+      "company": "Yoh, A Day & Zimmermann Company"
+    },
+    "e452a9f6cc044584691551e0b8f4e4bb": {
+      "title": "Martech Developer- Manager",
+      "company": "PwC"
+    },
+    "671cf58bc7a2028eb5b1a982a940f1ad": {
+      "title": "Senior GoLang Programmer",
+      "company": "Tata Consultancy Services"
+    },
+    "0455366b1f5060d44088f3b0ddea9f48": {
+      "title": "Data Engineer-- PARDC5921691",
+      "company": "Compunnel Inc."
+    },
+    "15e7b2f739c1b6a7486e5ac4a43879fb": {
+      "title": "Sr. Python System Developer",
+      "company": "Spatial Front, Inc"
+    },
+    "7ebf7845adfdf23e9cb00f3ea4ebe95a": {
+      "title": "Sr. Software Engineer - Backend (PST / MST ONLY)",
+      "company": "Lively, Inc."
+    },
+    "ddc729cf704b9a09a9547accba69e813": {
+      "title": "Lead Software Engineer-Dynamics 365 Contact Center",
+      "company": "H&R Block"
+    },
+    "ec4904da188cded55c8890bf4807d39f": {
+      "title": "Software Engineer (Backend Engineer)",
+      "company": "High Trail"
+    },
+    "18c4282e165bed7672cf3dc4a5199e1a": {
+      "title": "Software Engineer II \u2013 Precision Sensing & Seeker Systems",
+      "company": "BAE Systems"
+    },
+    "06e2b60231a9312ede4e61636676605e": {
+      "title": "Senior Software Engineer-Microsoft Dynamics OR Power Platform",
+      "company": "H&R Block"
+    },
+    "6d76ae1feda0ba8ff9bcbba2e8c94bbe": {
+      "title": "Software Engineer Data & AI PhD (Intern) - United States",
+      "company": "Cisco"
+    },
+    "b54c280014f39e988b3299d44a736966": {
+      "title": "Embedded Software Engineer",
+      "company": "Actalent"
+    },
+    "58e07b5d76cc96bfd1a782941a9794b4": {
+      "title": "Mobile Developer",
+      "company": "Actalent"
+    },
+    "4a4ac4994780f57561727fb34fe47063": {
+      "title": "Software Engineer",
+      "company": "Molex"
+    },
+    "0c97abc1bf7ccb6977d60c689dba4fcd": {
+      "title": "Software Engineer VI (Full Stack)",
+      "company": "Brix"
+    },
+    "dee6dcb8267d9b93b4bec293ded694ca": {
+      "title": "Manager, Epic Payer Platform (EPP) Data Engineering",
+      "company": "Medical Mutual"
+    },
+    "1a6f32b25decb9e43024a31c03405a35": {
+      "title": "Data Engineer \u2013 Entry Level",
+      "company": "BeaconFire Inc."
+    },
+    "558f340cff102eb7829b8e35f2da11db": {
+      "title": "Data Engineer (Databricks SME)",
+      "company": "IDR, Inc."
+    },
+    "af57c05b0ff2a244087d162b0875216b": {
+      "title": "Manager, Data Engineering",
+      "company": "Jobgether"
+    },
+    "19529db2b1297ca172219fa680c93cd1": {
+      "title": "Data Engineer 4, Auto Data Platforms",
+      "company": "Capital One"
+    },
+    "b3a910a4d972304f756b06987bb86dbb": {
+      "title": "Remote Databricks Lakehouse Engineer \u2014 AI",
+      "company": "RevStar Consulting Inc"
+    },
+    "4da1e74c1b269f7e98a495120b38095d": {
+      "title": "Senior Data Engineer on Azure",
+      "company": "Agileactors"
+    },
+    "6bda1d22fed511607f5d8464218269b3": {
+      "title": "AI Engineer - Data Scientist I",
+      "company": "Bank of America"
+    },
+    "29fcda975ba8d5144f47165b762fd7b1": {
+      "title": "Software Engineer Data & AI PhD (Intern) - United States",
+      "company": "Cisco"
+    },
+    "f2f94d23d64a2c335d3bc91b56cc86b2": {
+      "title": "Software Engineer Data & AI II (Intern) \u2013 United States",
+      "company": "Cisco"
+    },
+    "044234b7dc4839a01fcda65a144f19e0": {
+      "title": "Mechanical Engineering Intern (Mission Critical/Data Center) - Summer 2027",
+      "company": "WSP in the U.S."
+    },
+    "47f315f7d0e4a14ee543d62dd1f3cc94": {
+      "title": "Sales Analyst: Market Insights and Data Analytics",
+      "company": "Vadilal Industries USA"
+    },
+    "1158a5e35b9514fbc0c0cd05b5512fdb": {
+      "title": "Pricing Analyst",
+      "company": "BARENTZ NORTH AMERICA LLC"
+    },
+    "ff612a8d00b9405c6a82911ec3932fd9": {
+      "title": "Epic Senior Systems Analyst - Radiant/Cupid",
+      "company": "OhioHealth"
+    },
+    "1077f5c247012ebb1e45e597c56ba388": {
+      "title": "Sr. Analyst, Process Enablement",
+      "company": "Vertiv Holdings"
+    },
+    "aae47375d8783686d6442865ee9c0f09": {
+      "title": "Entry Business Systems Analyst - Commercial Finance",
+      "company": "Medpace, Inc."
+    },
+    "a18e069af79d8fcdd09844cd8d284316": {
+      "title": "NA Transportation - Freight Audit & Payment Process Analyst",
+      "company": "Procter & Gamble"
+    },
+    "befd193114a6b9fb19049850f4b43c3c": {
+      "title": "Sr.Data Analyst",
+      "company": "IMCS"
+    },
+    "aefbdbcb615d8b4ba566b9c6c71539dc": {
+      "title": "Business Analyst   - W2  ONLY",
+      "company": "eStaff LLC"
+    },
+    "6017beb1ef3668ce8c057796fcb56c11": {
+      "title": "Business Analyst/Project Manager",
+      "company": "TEKsystems"
+    },
+    "cf7b2d18fcc53a50bcfab36a126b73d2": {
+      "title": "Senior Business Technical Analyst",
+      "company": "Centene Corporation"
+    },
+    "56218a6e91096ed085975568d6c07472": {
+      "title": "Epic Resolute Analyst",
+      "company": "TEKsystems"
+    },
+    "952a087128d840440b8e5d4a3e09e3a3": {
+      "title": "HR Business Operations Strategy & Transformation Sr Analyst",
+      "company": "Maximus"
     }
   }
 }
